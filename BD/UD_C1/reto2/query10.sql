@@ -1,0 +1,3 @@
+SELECT * 
+FROM ACTOR 
+WHERE Nom LIKE 'X%';

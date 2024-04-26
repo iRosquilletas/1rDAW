@@ -1,0 +1,2 @@
+SELECT Data, Import 
+FROM FACTURA;

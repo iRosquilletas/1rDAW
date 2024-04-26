@@ -1,0 +1,45 @@
+1 --- 
+SELECT * FROM fotos WHERE idUsuario = 36;
+
+2 ---
+SELECT * FROM fotos 
+WHERE idUsuario = 36 
+AND YEAR(fecha_toma) = 2023 
+AND MONTH(fecha_toma) = 1;
+
+3 --- 
+SELECT contenido 
+FROM comentarios 
+WHERE idUsuario = 36 
+AND idFoto = 12 
+AND idUsuarioFoto = 11;
+
+4 ---
+SELECT idFoto
+FROM interacciones
+WHERE idUsuario = 25
+AND reaccion = 'sorpresa';
+
+5 ---
+SELECT idFoto
+FROM interacciones
+WHERE idUsuario = 25
+AND reaccion = 'sorpresa';
+
+6 ---
+SELECT idAdministrador
+FROM interacciones_administradores
+WHERE accion = 'Me gusta'
+GROUP BY idAdministrador
+HAVING COUNT(*) > 2;
+
+7 ---
+SELECT COUNT(*)
+FROM interacciones_fotos
+WHERE idUsuario = 45
+AND idFoto = 12
+AND reaccion = 'Me divierte';
+
+8 --- SELECT COUNT(*)
+FROM fotos
+WHERE LOWER(titulo) LIKE '%playa%';

@@ -1,0 +1,3 @@
+SELECT Descripcio 
+FROM DETALLFACTURA 
+WHERE CodiFactura = 3;

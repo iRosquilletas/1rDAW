@@ -1,0 +1,2 @@
+SELECT Nom, Telefon 
+FROM CLIENT;

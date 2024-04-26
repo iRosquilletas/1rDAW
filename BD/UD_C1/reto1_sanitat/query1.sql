@@ -1,0 +1,2 @@
+SELECT HOSPITAL_COD AS "código",NOM AS "nombre",TELEFON AS "telefono"
+FROM HOSPITAL;
