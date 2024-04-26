@@ -1,0 +1,43 @@
+﻿Ejercicios Git - I
+
+
+1.
+git config –global user.name “Samuel”
+git config –global user.email “samyelrandom@gmail.com”
+git config –global 
+
+
+2.
+git init libro
+cd libro
+ls
+
+
+3.
+git status
+touch indice.txt
+vim indice.txt
+git status
+git add indice.txt
+git status
+
+
+4.
+git commit -m “Añado el indice.txt”
+
+
+
+
+5.
+vim indice.txt
+git diff
+git add .
+git commit -m “Añado cambios”
+
+
+
+
+6.
+git log -p -1
+git commit -m “Añadido capítulo 3 sobre gestión de ramas al índice”
+git log -p -1

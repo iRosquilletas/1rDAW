@@ -1,0 +1,47 @@
+﻿Ejercicios Git - Illl
+
+
+
+
+1.
+git branch bibliografia
+git checkout bibliografia
+git branch
+
+
+2.
+touch capitulo4.txt
+git add .
+git commit -m “Añadido capítulo 4”
+git log -all -graph -oneline
+
+
+3.
+git checkout bibliografia
+touch bibliografia.txt
+git add .
+git commit -m “Añadida primera referencia bibliográfica”
+git log -all -graph -oneline
+
+
+4.
+git checkout master
+git merge bibliografia
+git log -all -graph -online
+git branch -d bibliografía
+git log -all -graph -oneline
+
+
+5.
+git branch bibliografia
+git checkout bibliografia
+vim bibliografia.txt
+git checkout master
+vim bibliografia.txt
+git add .
+git commit -m “Añadida nueva referencia bibliográfica”
+git merge bibliografia
+“Elimino las lineas que no son”
+git add .
+git commit -m “Resuelto conflicto de bibliografia”
+git log -all -graph -oneline

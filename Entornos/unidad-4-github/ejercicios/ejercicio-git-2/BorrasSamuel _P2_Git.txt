@@ -1,0 +1,35 @@
+﻿Ejercicios Git - Il
+
+
+1.
+git log
+mkdir capitulos
+cd capitulos
+touch capitulo1.txt
+vim capitulo1.txt
+git add capitulo1.txt
+git commit -m “Añadido capítulo 1.”
+git log
+
+
+2. 
+touch capitulo2.txt
+vim capitulo2.txt
+git add capitulo2.txt
+git commit -m “Añadido capitulo2”
+ git diff HEAD HEAD ~2 
+
+
+3.
+touch capitulo3.txt
+vim capitulo3.txt
+git add capitulo3.txt
+git commit -m “Añadido capítulo 3”
+git diff HEAD HEAD ~2
+
+
+4.
+vim indice.txt
+git add indice.txt
+git commit -m “Añadido capítulo 5 al índice.”
+git blame indice.txt

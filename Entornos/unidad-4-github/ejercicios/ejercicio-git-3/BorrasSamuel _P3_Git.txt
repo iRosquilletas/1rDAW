@@ -1,0 +1,43 @@
+﻿Ejercicios Git - Ill
+
+
+1.
+sed -i ‘$ d’ indice.txt
+git status
+git checkout indice.txt
+git status
+
+
+2.
+sed -i ‘$ d’ indice.txt
+git add .
+git status
+git restore -staged indice.txt
+
+
+3.
+sed -i ‘$ d’ indice.txt
+rm capitulos/capitulo3.txt
+cd capitulos
+vim capitulo4.txt
+git add .
+git status
+git restore -staged indicetxt /capituloa/capitulo4.txt
+git status
+git restore -source=HEAD -staged -worktree
+git status
+
+
+4.
+sed -i ‘$ d’ indice.txt
+rm capitulos/capitulo3.txt
+git add .
+git commit -m “Borrado accidental”
+git log
+git reset –soft HEAD~1
+git log
+git status
+git commit -m “Borrado accidental”
+git reset –hard HEAD~1
+git log 
+git status

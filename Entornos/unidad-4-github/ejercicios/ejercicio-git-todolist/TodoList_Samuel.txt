@@ -1,0 +1,36 @@
+git branch -m todo
+
+PATXI
+git checkout patxi
+git commit -m "Supervisar el desarrollo de la aplicación"
+git commit -m "Asignar las tareas de desarrollo a cada integrante del equipo"
+
+ANGEL
+git checkout angel
+git commit -m "Configurar la infraestructura sobre la que se va a alojar la aplicación"
+git commit -m "Supervisar las implementaciones críticas referentes a seguridad"
+
+ANTONIO
+git checkout antonio
+git commit -m "Inicializar repositorio"
+git commit -m "Supervisar los pull requests de cada desarrollo"
+
+CHATGPT
+git checkout chatgpt
+git commit -m "Resolver dudas del equipo técnico"
+git commit -m "Mejorar la calidad del código en funciones de alta complejidad"
+
+JAVIER_GARCIA
+git checkout javier_garcia
+git commit -m "Diseño de la base de datos"
+git commit -m "Normalización"
+git commit -m "Implementación de la base de datos"
+git commit -m "Preparar datos de prueba"
+
+git checkout todo
+git merge antonio
+git merge javier_garcia
+git merge patxi
+git merge angel
+git merge chatgpt
+

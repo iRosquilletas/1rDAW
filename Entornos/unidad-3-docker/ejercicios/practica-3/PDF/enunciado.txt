@@ -1,0 +1,3 @@
+Se adjuntan 3 casos prácticos para llevar a cabo de igual forma que hicimos con la práctica 1.
+
+Cread un carpeta con los ficheros generados y un fichero que registre mediante capturas, cada uno de los ejercicios que habéis realizado.
