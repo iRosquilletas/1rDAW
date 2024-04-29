@@ -1,0 +1,43 @@
+# ┌───────────── minute (0 - 59)
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── day of week (0 - 6) (Sunday to Saturday;
+# │ │ │ │ │                                       7 is also Sunday on some systems)
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * *  command_to_execute
+
+
+
+###### Sample crontab ######
+
+# Empty temp folder every Friday at 5pm
+# 0 5 * * 5 rm -rf /tmp/*
+
+# Backup images to Google Drive every night at midnight
+# 0 0 * * * rsync -a ~/Pictures/ ~/Google\ Drive/Pictures/
+
+
+# EJERCICIO 4
+* * * * * echo `date` >> $HOME/Desktop/test.txt
+
+# EJERCICIO 5
+# 33 18 * * * cp $HOME/Desktop/* $HOME/Desktop/backup
+
+# EJERCICIO 6
+# * * * * * /home/samy/Desktop/nueve.sh
+
+# 0 0 1,15 * * echo "hello" >> test.txt
+
+# , esto hace el dia 1 y el dia 15
+# - esto hace del dia 1 hasta el 15, es decir, 1,2,3,4 etc
+
+
+# */10 * * * * echo "hello" >> test.txt
+# Esto hace que se ejecute cada 10 minutos, porque si solo pones 10, se ejecuta a las x:10 de cada hora
+
+# 0 0 */3 * * 
+# Esto hace que se ejecutara cada 3 dias a las 12 de la mañana.
+

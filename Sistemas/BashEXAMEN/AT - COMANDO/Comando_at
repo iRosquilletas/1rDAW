@@ -1,0 +1,33 @@
+atq - ver procesos que se van a ejecutar
+at 17:35 - Se abrira una nueva shell para poner los comandos que quieras, Control + D para salir.
+
+mkdir pruebas5 | at 17:35 - No funciona
+
+mkdir pruebas6 | at now +1 minutes - No funciona
+
+atq
+at -c (number) - ver el comando que va a hacer
+
+
+atq
+atrm (id) - quitar at
+
+
+EJERCICIOS AT 
+
+
+Ejercicio 1
+
+at 17:35
+bash uno.sh 
+Control + D
+
+
+Ejercicio 2
+
+at 02:30 
+bash dos.sh
+Control + D
+
+Ejercicio 3
+

@@ -1,0 +1,4 @@
+contrab -e  - Para elegir el editor de texto
+
+export EDITOR=vim - Para cambiar editor
+

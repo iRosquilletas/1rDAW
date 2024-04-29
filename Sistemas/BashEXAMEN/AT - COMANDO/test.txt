@@ -1,0 +1,8 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+samy        2000  0.0  0.1 164916  6400 tty2     Ssl+ 16:28   0:00 /usr/libexec/gdm-wayland-session env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --session=ubuntu
+samy        2003  0.0  0.4 225568 15744 tty2     Sl+  16:28   0:00 /usr/libexec/gnome-session-binary --session=ubuntu
+samy        3985  0.0  0.1  14068  5632 pts/0    Ss   17:12   0:00 bash
+samy        5634  0.0  0.0  12500  3584 pts/0    S+   18:04   0:00 bash tres.sh
+samy        5635  0.0  0.0  12500  1432 pts/0    S+   18:04   0:00 bash tres.sh
+samy        5636  0.0  0.0  15200  3584 pts/0    R+   18:04   0:00 ps -u
+samy        5637  0.0  0.0  10908  2176 pts/0    S+   18:04   0:00 tee test.txt
