@@ -1,0 +1,9 @@
+montar volumen
+sudo mount -t ext4 sdb1 /media/prueba1/
+
+quitar volumen
+sudo umount /dev/sdb1
+
+
+
+

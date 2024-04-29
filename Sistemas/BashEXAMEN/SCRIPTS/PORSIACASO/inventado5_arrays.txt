@@ -1,0 +1,257 @@
+Declaración de arrays:
+Crea un array llamado numeros con los números del 1 al 5.
+Imprime el valor del tercer elemento del array numeros.
+Imprime todos los valores del array numeros.
+Imprime el número de elementos en el array numeros.
+
+
+#!/bin/bash
+# Declaración de un array llamado "numeros" con los números del 1 al 5
+numeros=(1 2 3 4 5)
+# Imprimir el valor del tercer elemento del array "numeros"
+echo "El tercer elemento del array numeros es: ${numeros[2]}"
+# Imprimir todos los valores del array "numeros"
+echo "Todos los valores del array numeros son: ${numeros[*]}"
+# Imprimir el número de elementos en el array "numeros"
+echo "El número de elementos en el array numeros es: ${#numeros[@]}"
+
+
+
+
+
+
+
+
+
+Modificación de arrays:
+Cambia el valor del segundo elemento del array numeros a 10.
+Añade el número 6 al final del array numeros.
+Elimina el tercer elemento del array numeros.
+Elimina todo el array numeros.
+#!/bin/bash
+
+# Declaración de un array llamado "numeros" con los números del 1 al 5
+numeros=(1 2 3 4 5)
+
+# Cambiar el valor del segundo elemento del array "numeros" a 10
+numeros[1]=10
+
+# Añadir el número 6 al final del array "numeros"
+numeros+=(6)
+
+# Eliminar el tercer elemento del array "numeros"
+unset numeros[2]
+
+# Eliminar todo el array "numeros"
+unset numeros
+
+# Imprimir el resultado
+echo "El array numeros ha sido modificado y eliminado."
+
+
+Extracción de elementos:
+Crea un array llamado letras con las letras del alfabeto (puedes usar la expansión de rango: {a..z}).
+Extrae los primeros tres elementos del array letras.
+Extrae los elementos del tercer al quinto elemento del array letras.
+Extrae los últimos tres elementos del array letras.
+#!/bin/bash
+
+# Declaración de un array llamado "letras" con las letras del alfabeto
+letras=({a..z})
+
+# Extraer los primeros tres elementos del array "letras"
+primeros_tres=("${letras[@]:0:3}")
+
+# Extraer los elementos del tercero al quinto del array "letras"
+del_tercero_al_quinto=("${letras[@]:2:3}")
+
+# Extraer los últimos tres elementos del array "letras"
+ultimos_tres=("${letras[@]: -3}")
+
+# Imprimir los resultados
+echo "Los primeros tres elementos del array letras son: ${primeros_tres[@]}"
+echo "Los elementos del tercero al quinto del array letras son: ${del_tercero_al_quinto[@]}"
+echo "Los últimos tres elementos del array letras son: ${ultimos_tres[@]}"
+
+
+
+Operaciones avanzadas:
+Crea un array llamado nombres con los nombres de algunos de tus compañeros de clase.
+Ordena alfabéticamente el array nombres.
+Busca si el nombre "Juan" está presente en el array nombres.
+Concatena el array nombres con otro array que contenga los nombres de algunos profesores.
+
+#!/bin/bash
+
+# Declaración de un array llamado "nombres" con algunos nombres de compañeros de clase
+nombres=("Ana" "Juan" "María" "Pedro" "Elena")
+
+# Ordenar alfabéticamente el array "nombres"
+nombres_ordenados=($(printf "%s\n" "${nombres[@]}" | sort))
+
+# Buscar si el nombre "Juan" está presente en el array "nombres"
+if [[ " ${nombres[@]} " =~ " Juan " ]]; then
+    echo "El nombre Juan está presente en el array nombres."
+else
+    echo "El nombre Juan no está presente en el array nombres."
+fi
+
+# Concatenar el array "nombres" con otro array que contenga los nombres de algunos profesores
+profesores=("Carlos" "Luisa" "Marcela")
+nombres_concatenados=("${nombres[@]}" "${profesores[@]}")
+
+# Imprimir los resultados
+echo "Nombres ordenados alfabéticamente: ${nombres_ordenados[*]}"
+echo "Nombres concatenados con los nombres de algunos profesores: ${nombres_concatenados[*]}"
+
+
+
+Operaciones con elementos del array:
+Crea un array llamado edades con algunas edades de personas.
+Encuentra la edad más alta en el array.
+Encuentra la edad más baja en el array.
+Calcula el promedio de todas las edades en el array.
+#!/bin/bash
+
+# Definir un array llamado "edades" con algunas edades de personas
+edades=(25 30 20 35 22 28)
+# Encontrar la edad más alta en el array
+edad_maxima=${edades[0]}
+for edad in "${edades[@]}"; do
+    if ((edad > edad_maxima)); then
+        edad_maxima=$edad
+    fi
+done
+
+# Encontrar la edad más baja en el array
+edad_minima=${edades[0]}
+for edad in "${edades[@]}"; do
+    if ((edad < edad_minima)); then
+        edad_minima=$edad
+    fi
+done
+# Calcular el promedio de todas las edades en el array
+total_edades=0
+for edad in "${edades[@]}"; do
+    ((total_edades += edad))
+done
+promedio_edades=$((total_edades / ${#edades[@]}))
+# Imprimir los resultados
+echo "La edad más alta es: $edad_maxima"
+echo "La edad más baja es: $edad_minima"
+echo "El promedio de las edades es: $promedio_edades"
+
+
+
+
+
+
+
+
+
+
+
+
+Eliminación selectiva de elementos:
+Crea un array llamado colores con algunos nombres de colores.
+Elimina el color "verde" del array.
+Elimina todos los colores que contengan la letra "a".
+#!/bin/bash
+
+# Definir un array llamado "colores" con algunos nombres de colores
+colores=("rojo" "verde" "azul" "amarillo" "naranja" "morado")
+
+# Eliminar el color "verde" del array
+for ((i = 0; i < ${#colores[@]}; i++)); do
+    if [[ "${colores[i]}" == "verde" ]]; then
+        unset 'colores[i]'
+    fi
+done
+
+# Eliminar todos los colores que contengan la letra "a"
+for ((i = 0; i < ${#colores[@]}; i++)); do
+    if [[ "${colores[i]}" == *"a"* ]]; then
+        unset 'colores[i]'
+    fi
+done
+
+# Imprimir el array después de eliminar elementos
+echo "El array de colores después de eliminar el color verde y los colores con 'a':"
+echo "${colores[@]}"
+
+
+
+Combinación y división de arrays:
+Crea dos arrays llamados frutas1 y frutas2 con diferentes frutas.
+Combina los dos arrays en uno nuevo llamado todas_las_frutas.
+Divide el array todas_las_frutas en dos arrays separados, cada uno conteniendo la mitad de las frutas.
+#!/bin/bash
+# Definir dos arrays llamados "frutas1" y "frutas2" con diferentes frutas
+frutas1=("manzana" "pera" "plátano" "uva")
+frutas2=("sandía" "melón" "piña" "mango")
+
+# Combinar los dos arrays en uno nuevo llamado "todas_las_frutas"
+todas_las_frutas=("${frutas1[@]}" "${frutas2[@]}")
+
+# Dividir el array "todas_las_frutas" en dos arrays separados, cada uno conteniendo la mitad de las frutas
+mitad1=("${todas_las_frutas[@]:0:${#todas_las_frutas[@]}/2}")
+mitad2=("${todas_las_frutas[@]:${#todas_las_frutas[@]}/2}")
+
+# Imprimir los resultados
+echo "Frutas en la primera mitad del array: ${mitad1[*]}"
+echo "Frutas en la segunda mitad del array: ${mitad2[*]}"
+
+
+
+Búsqueda y reemplazo de elementos:
+Crea un array llamado palabras con algunas palabras.
+Busca la palabra "manzana" en el array y cámbiala por "pera".
+Busca todas las palabras que contengan la letra "o" y cámbialas por "naranja".
+#!/bin/bash
+
+# Definir un array llamado "palabras" con algunas palabras
+palabras=("casa" "perro" "gato" "manzana" "árbol")
+
+# Buscar la palabra "manzana" en el array y cambiarla por "pera"
+for ((i = 0; i < ${#palabras[@]}; i++)); do
+    if [[ "${palabras[i]}" == "manzana" ]]; then
+        palabras[i]="pera"
+    fi
+done
+
+# Buscar todas las palabras que contengan la letra "o" y cambiarlas por "naranja"
+for ((i = 0; i < ${#palabras[@]}; i++)); do
+    if [[ "${palabras[i]}" == *"o"* ]]; then
+        palabras[i]="naranja"
+    fi
+done
+
+# Imprimir el array después de reemplazar elementos
+echo "El array de palabras después de reemplazar 'manzana' por 'pera' y palabras con 'o' por 'naranja':"
+echo "${palabras[@]}"
+
+Operaciones avanzadas:
+Crea un array llamado numeros con una secuencia del 1 al 10.
+Duplica cada número en el array (es decir, multiplica cada elemento por 2).
+Calcula la suma de todos los números en el array.
+#!/bin/bash
+
+# Definir un array llamado "numeros" con algunos números enteros
+numeros=(10 20 30 40 50)
+
+# Calcular la suma de todos los números en el array
+suma=0
+for numero in "${numeros[@]}"; do
+    ((suma += numero))
+done
+
+# Calcular el promedio de todos los números en el array
+total_numeros=${#numeros[@]}
+promedio=$((suma / total_numeros))
+
+# Imprimir la suma y el promedio
+echo "La suma de los números es: $suma"
+echo "El promedio de los números es: $promedio"
+
+
+

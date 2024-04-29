@@ -1,0 +1,35 @@
+if [ condición1 ] && [ condición2 ]; then
+    # Código a ejecutar si ambas condiciones son verdaderas
+fi
+
+
+if [ condición1 ] || [ condición2 ]; then
+    # Código a ejecutar si al menos una de las condiciones es verdadera
+fi
+
+Igualdad:
+
+-eq: Igual a
+Ejemplo: if [ "$a" -eq "$b" ]
+
+
+
+No igualdad:
+-ne: No igual a
+Ejemplo: if [ "$a" -ne "$b" ]
+
+Menor que:
+-lt: Menor que
+Ejemplo: if [ "$a" -lt "$b" ]
+
+Menor o igual que:
+-le: Menor o igual que
+Ejemplo: if [ "$a" -le "$b" ]
+
+Mayor que:
+-gt: Mayor que
+Ejemplo: if [ "$a" -gt "$b" ]
+
+Mayor o igual que:
+-ge: Mayor o igual que
+Ejemplo: if [ "$a" -ge "$b" ]

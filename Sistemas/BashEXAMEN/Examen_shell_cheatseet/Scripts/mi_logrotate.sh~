@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+while read linea;
+do
+	echo -e "Línea: $linea"
+done < file1.txt
+
+a = $(wc -w  file1.txt)
+
+echo "$a"
+
+
+
+
+
+

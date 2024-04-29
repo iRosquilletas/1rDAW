@@ -1,0 +1,165 @@
+CUT
+
+
+El comando `cut` se utiliza para extraer secciones de cada línea de un archivo de texto. Aquí tienes una descripción de sus parámetros más comunes:
+
+1. `-d`: Especifica el delimitador utilizado para separar los campos. Por defecto, el delimitador es el tabulador.
+   
+   Ejemplo:
+   ```bash
+   echo "Juan,Perez,25" | cut -d ',' -f 1
+
+
+
+2. -f: Especifica el campo o los campos a extraer. Puede ser un solo campo o una lista separada por comas de campos.
+
+Ejemplo:
+
+
+echo "Juan,Perez,25" | cut -d ',' -f 2,3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TR
+
+
+-d: Borra los caracteres especificados en la entrada.
+
+Ejemplo:
+
+bash
+Copy code
+echo "Hola Mundo" | tr -d 'o'
+Este comando eliminará todas las ocurrencias del carácter 'o', por lo que imprimirá "Hla Mund".
+
+
+-s: Sustituye secuencias de caracteres repetidos por un solo carácter.
+
+Ejemplo:
+
+bash
+Copy code
+echo "Hoooolaaa" | tr -s 'o'
+Este comando sustituirá las secuencias de 'o' repetidas por un solo 'o', por lo que imprimirá "Hoola".
+
+-c: Complementa el conjunto de caracteres especificado.
+
+Ejemplo:
+
+bash
+Copy code
+echo "Hola Mundo" | tr -c 'a-z' 'X'
+Este comando complementará todas las letras minúsculas del alfabeto, sustituyéndolas por 'X', por lo que imprimirá "XXXX XXXXX".
+
+[:class:]: Define clases de caracteres predefinidas.
+
+Ejemplo:
+
+bash
+Copy code
+echo "Hola Mundo" | tr '[:lower:]' '[:upper:]'
+Este comando convertirá todas las letras minúsculas en mayúsculas, por lo que imprimirá "HOLA MUNDO".
+
+
+
+
+\: Permite usar secuencias de escape para caracteres especiales como espacios en blanco, tabulaciones, etc.
+
+Ejemplo:
+
+bash
+Copy code
+echo "Hola Mundo" | tr ' ' '_'
+Este comando reemplazará todos los espacios en blanco por guiones bajos, por lo que imprimirá "Hola_Mundo".
+
+
+
+
+
+
+
+FIND
+
+
+
+
+
+El comando find se utiliza para buscar archivos y directorios en un sistema de archivos según diversos criterios. Aquí tienes una descripción de algunos de sus parámetros más comunes:
+
+-name: Busca archivos cuyo nombre coincida exactamente con el patrón especificado.
+
+Ejemplo:
+
+bash
+Copy code
+find /ruta -name "archivo.txt"
+Este comando buscará el archivo exactamente llamado "archivo.txt" dentro del directorio /ruta y sus subdirectorios.
+
+-type: Especifica el tipo de archivo a buscar, como "f" para archivos regulares o "d" para directorios.
+
+Ejemplo:
+
+bash
+Copy code
+find /ruta -type f
+Este comando buscará solo archivos regulares dentro del directorio /ruta y sus subdirectorios.
+
+-exec: Ejecuta un comando para cada archivo encontrado.
+
+Ejemplo:
+
+bash
+Copy code
+find /ruta -type f -name "*.txt" -exec ls -l {} \;
+Este comando buscará archivos con extensión ".txt" dentro del directorio /ruta y sus subdirectorios, y ejecutará el comando ls -l para cada archivo encontrado.
+
+-size: Especifica el tamaño del archivo a buscar.
+
+Ejemplo:
+
+bash
+Copy code
+find /ruta -type f -size +1M
+Este comando buscará archivos con un tamaño mayor a 1 megabyte dentro del directorio /ruta y sus subdirectorios.
+
+-mtime: Busca archivos según su fecha de modificación.
+
+Ejemplo:
+
+bash
+Copy code
+find /ruta -type f -mtime -7
+Este comando buscará archivos modificados en los últimos 7 días dentro del directorio /ruta y sus subdirectorios.
+
+-maxdepth y -mindepth: Limita la profundidad de búsqueda en la jerarquía de directorios.
+
+Ejemplo:
+
+bash
+Copy code
+find /ruta -maxdepth 2 -type f
+Este comando buscará archivos regulares dentro del directorio /ruta y sus subdirectorios hasta una profundidad máxima de 2 niveles.
+

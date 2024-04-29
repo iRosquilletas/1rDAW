@@ -1,0 +1,73 @@
+1. Buscar archivos por extensión:
+   Desarrolla un script que solicite al usuario una extensión de archivo y luego utilice `find` para buscar todos los archivos en el directorio actual que tengan esa extensión.
+
+#!/bin/bash
+
+read -p "Introduce la extensión de archivo que deseas buscar: " extension
+
+echo "Archivos con extensión .$extension en el directorio actual:"
+find . -type f -name "*.$extension"
+
+
+
+
+
+2. Contar archivos por tamaño:
+   Escribe un script que pida al usuario un tamaño mínimo y máximo en bytes, y luego utilice `find` para contar la cantidad de archivos en el directorio actual que estén dentro de ese rango de tamaño.
+
+#!/bin/bash
+
+read -p "Introduce el tamaño mínimo en bytes: " min_size
+read -p "Introduce el tamaño máximo en bytes: " max_size
+
+echo "Cantidad de archivos entre $min_size y $max_size bytes:"
+find . -type f -size +${min_size}c -size -${max_size}c | wc -l
+
+
+
+
+3. Buscar archivos modificados recientemente:
+   Crea un script que busque todos los archivos en el directorio actual que hayan sido modificados en los últimos 7 días utilizando `find`.
+
+#!/bin/bash
+
+echo "Archivos modificados en los últimos 7 días:"
+find . -type f -mtime -7
+
+
+
+4. Buscar archivos vacíos:
+   Desarrolla un script que utilice `find` para encontrar todos los archivos vacíos (sin contenido) en el directorio actual y sus subdirectorios.
+
+#!/bin/bash
+
+echo "Archivos vacíos en el directorio actual y sus subdirectorios:"
+find . -type f -empty
+
+
+
+5. Buscar archivos por nombre parcial:
+   Escribe un script que solicite al usuario una parte del nombre de archivo y luego utilice `find` para buscar todos los archivos cuyos nombres contengan esa parte.
+
+
+#!/bin/bash
+
+read -p "Introduce una parte del nombre de archivo: " nombre_parcial
+
+echo "Archivos cuyos nombres contienen '$nombre_parcial':"
+find . -type f -name "*$nombre_parcial*"
+
+
+
+6. Buscar archivos ejecutables:
+   Crea un script que utilice `find` para buscar todos los archivos ejecutables (archivos con permisos de ejecución) en el directorio actual y sus subdirectorios.
+
+
+#!/bin/bash
+
+echo "Archivos ejecutables en el directorio actual y sus subdirectorios:"
+find . -type f -executable
+
+
+
+

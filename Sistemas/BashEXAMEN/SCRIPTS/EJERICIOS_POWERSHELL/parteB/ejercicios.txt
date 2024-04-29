@@ -1,0 +1,110 @@
+# 1. Calculadora básica con las 4 operaciones básicas y la potencia
+function Calculadora {
+    param (
+        [int]$num1,
+        [int]$num2,
+        [string]$operacion
+    )
+
+    switch ($operacion) {
+        "+" { $resultado = $num1 + $num2 }
+        "-" { $resultado = $num1 - $num2 }
+        "*" { $resultado = $num1 * $num2 }
+        "/" { $resultado = $num1 / $num2 }
+        "potencia" { $resultado = [math]::Pow($num1, $num2) }
+        default { Write-Host "Operación no válida." }
+    }
+
+    Write-Host "Resultado: $resultado"
+}
+
+# 2. Generar número aleatorio y adivinarlo por aproximaciones
+function AdivinaNumero {
+    param (
+        [int]$rango
+    )
+
+    $numeroAleatorio = Get-Random -Minimum 1 -Maximum $rango
+    Write-Host "Se ha generado un número aleatorio entre 1 y $rango."
+    $adivinanza = 0
+
+    while ($adivinanza -ne $numeroAleatorio) {
+        $adivinanza = Read-Host "Introduce un número: "
+        if ($adivinanza -lt $numeroAleatorio) {
+            Write-Host "El número es mayor."
+        }
+        elseif ($adivinanza -gt $numeroAleatorio) {
+            Write-Host "El número es menor."
+        }
+    }
+
+    Write-Host "¡Has adivinado el número!"
+}
+
+# 3. Generar n números aleatorios y verificar si está un número
+function VerificarNumero {
+    param (
+        [int]$rango,
+        [int]$cantidad
+    )
+
+    $numerosAleatorios = 1..$cantidad | ForEach-Object { Get-Random -Minimum 1 -Maximum $rango }
+    $numeroBuscado = Read-Host "Introduce un número para verificar si está en la lista: "
+
+    if ($numerosAleatorios -contains $numeroBuscado) {
+        Write-Host "El número $numeroBuscado está en la lista."
+    }
+    else {
+        Write-Host "El número $numeroBuscado no está en la lista."
+    }
+}
+
+# 4. Escribir la tabla de multiplicar de un número n
+function TablaMultiplicar {
+    param (
+        [int]$numero
+    )
+
+    1..10 | ForEach-Object {
+        $resultado = $_ * $numero
+        Write-Host "$_ x $numero = $resultado"
+    }
+}
+
+# 5. Adivinar una palabra sobre un tema
+function AdivinaPalabra {
+    param (
+        [string]$palabra
+    )
+
+    $longitud = $palabra.Length
+    $letra = Read-Host "Introduce una letra para adivinar la palabra: "
+    $ocurrencias = ($palabra -split $letra).Count - 1
+
+    if ($ocurrencias -gt 0) {
+        $posiciones = @()
+        $posicion = 0
+        while ($posicion -lt $longitud) {
+            $posicion = $palabra.IndexOf($letra, $posicion)
+            if ($posicion -ge 0) {
+                $posiciones += $posicion
+                $posicion++
+            }
+            else {
+                break
+            }
+        }
+        Write-Host "La letra '$letra' aparece $ocurrencias veces en las posiciones: $($posiciones -join ', ')"
+    }
+    else {
+        Write-Host "La letra '$letra' no aparece en la palabra."
+    }
+}
+
+# Llamadas a las funciones
+Calculadora -num1 5 -num2 2 -operacion "+"
+AdivinaNumero -rango 100
+VerificarNumero -rango 50 -cantidad 5
+TablaMultiplicar -numero 7
+AdivinaPalabra -palabra "elefante"
+

@@ -9,7 +9,8 @@
 # │ │ │ │ │
 # * * * * *  command_to_execute
 
-
+# cron.allow
+# cron.deny
 
 ###### Sample crontab ######
 

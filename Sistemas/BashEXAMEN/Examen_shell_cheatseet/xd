@@ -1,0 +1,5 @@
+cut -d decimal
+cut -f num campo
+
+sort -t decimal 
+sort -k num campo
