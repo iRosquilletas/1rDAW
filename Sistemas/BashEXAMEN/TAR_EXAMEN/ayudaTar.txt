@@ -1,0 +1,28 @@
+Opción
+
+c - Crea un contenedor
+x - Extrae archivos de un contenedor
+t - Testea los archivos almacenados en un contenedor
+r - Añade archivos al final de un contenedor
+v - Modo verbose
+f - Especifica el nombre del contenedor
+Z - Comprime o descomprime mediante compress/uncompress
+z - Comprime o descomprime mediante gzip
+p - Conserva los permisos de los ficheros
+M - Multi volumen
+
+ESTO CREA BACKUP
+tar cvf /home/samy/Desktop/backup.tar /home/samy/Desktop/tarPrueba
+
+ESTO LEE EL TAR
+tar tvf /home/samy/Desktop/backup.tar
+
+PARA RECUPERAR EL BACKUP EN EL DIRECTORIO ACTUAL
+tar xvf /home/samy/Desktop/backup.tar
+
+
+EJEMPLO DE BACKUP TOTAL CON FECHA
+
+tar cvf backupTotal_`date +%d%b%y`.tar tarPruebas
+
+
