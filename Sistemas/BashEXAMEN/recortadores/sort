@@ -1,0 +1,6 @@
+sort -r - orden inverso
+sort -n - utiliza el criterio numérico
+sort -f - ignora mayúscula y minúsculas
+sort -k <numero><archivo> - ordena por el número de columna
+sort -t <separador> <archivo> - ordena si en el archivo existen separadores
+sort -u <archivo> elimina contenido repetido

@@ -1,0 +1,3 @@
+uniq -c - muestra el número de repeticiones
+uniq -d - muestra las líneas repetidas
+uniq -u - muestra las líneas no repetidas

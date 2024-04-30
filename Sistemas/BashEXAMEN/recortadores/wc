@@ -1,0 +1,4 @@
+wc -l - numero de lineas
+wc -w - numero de palabras
+wc -m - numero de caracteres
+wc -c - numero de bits

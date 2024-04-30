@@ -1,0 +1,2 @@
+cut -d <delimitador> -f <columna> <archivo>
+cut -c <rango de caracteres> <ficheros>  
