@@ -32,7 +32,7 @@ do
 done < "$1"
 
 # MEJORAS
- # VER COMO HACER QUE NO PONGA LINEAS TODO EL RATO EN EL FICHERO, se puede hacer con uniq. 
+# VER COMO HACER QUE NO PONGA LINEAS TODO EL RATO EN EL FICHERO, se puede hacer con uniq. 
 
 cat palabras-$MES.txt | sort | uniq > temp.txt
 mv temp.txt palabras-$MES.txt

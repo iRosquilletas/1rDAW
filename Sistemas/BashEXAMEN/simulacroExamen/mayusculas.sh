@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for file in noticias*.txt
+for file in noticia*.txt
 do
 	while IFS="$" read -r ID FECHA TITULO AUTOR TEXTO
 	do

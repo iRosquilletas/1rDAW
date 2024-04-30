@@ -26,3 +26,12 @@ EJEMPLO DE BACKUP TOTAL CON FECHA
 tar cvf backupTotal_`date +%d%b%y`.tar tarPruebas
 
 
+
+EJEMPLO CON FECHA TOTAL, AÑO, MES, DIA, HORA, MINUTO Y SEGUNDO
+tar cvf /home/samy/Desktop/backup_`date +%Y%m%d_%H%M%S`.tar /home/samy/Desktop/tarPruebas/
+
+PARA HACER COPIA INCREMENTAL
+tar cvzf /home/samy/Desktop/backup_`date +%Y%m%d_%H%M%S`.tar --listed-incremental=lista-increm.txt /home/samy/Desktop/tarPruebas/
+
+
+
