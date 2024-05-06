@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.*;
+import javafx.fxml.*;
+import javafx.application.*;
 
 import java.io.IOException;
 

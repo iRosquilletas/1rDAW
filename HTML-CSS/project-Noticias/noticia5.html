@@ -46,6 +46,50 @@
             <button onclick="window.location.href='https://www.elmundo.es'">El Mundo</button>
             <button onclick="window.location.href='https://www.larazon.es'">La Razón</button>
         </div>
+
+
+        <br><br><br>
+        <form action="/no_hay_pagina.php">
+            <label for="gsearch">Busqueda palabra:</label>
+            <input type="search" id="gsearch" name="gsearch">
+            <input type="submit">
+        </form>
+
+        <form>
+            <p> Del 1 al 5 que tan buena te pareció la lecutura?</p>
+            <input type="radio" id="html" name="fav_language" value="HTML">
+            <label for="html">1</label>
+            <input type="radio" id="css" name="fav_language" value="CSS">
+            <label for="css">2</label>
+            <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+            <label for="javascript">3</label>
+            <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+            <label for="javascript">4</label>
+            <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+            <label for="javascript">5</label>
+        </form>
+
+        <br><br>
+        <label for="membership">Del 1 al 5 que te parecio la lectura?</label>
+        <select>
+            <option value="rigatoni">1</option>
+            <option value="dave">2</option>
+            <option value="pumpernickel">3</option>
+            <option value="reeses">4</option>
+            <option value="reeses">5</option>
+        </select>
+        <br><br><br><br>
+
+
+
+        <form action="procesar_formulario.php" method="post">
+            <label for="email">Introduce tu dirección de email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <input type="submit" value="Suscribirse">
+        </form>
+
+
+        
         <p style="color: hsl(0, 19%, 25%);">Parece que fue ayer, pero lo cierto es que <strong>hoy se cumplen 20
                 años de
                 la llegada oficial de Google a España</strong> o, lo que es lo mismo, desde la constitución de
@@ -73,7 +117,6 @@
             toda la
             población en un momento dado. ¿Un ejemplo de ello? Solo tenemos que ir a Google Trends y buscar el
             histórico, desde 2004, de búsquedas relacionadas con la prima de riesgo. Este es el resultado:</p>
-
 
 
     </div>
