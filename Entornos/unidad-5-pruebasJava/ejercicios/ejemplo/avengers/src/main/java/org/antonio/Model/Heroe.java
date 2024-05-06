@@ -25,21 +25,21 @@ public class Heroe {
         return biografia;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(String nombre){
 
         this.nombre = nombre;
 
     }
 
-    public void setSuperpoderes(String superpoderes) {
+    public void setSuperpoderes(String superpoderes){
 
-        this.superpoderes = superpoderes;
+        this.superpoderes= superpoderes;
 
     }
 
-    public void setBiografia(String biografia) {
+    public void setBiografia(String biografia){
 
-        this.biografia = biografia;
+        this.biografia= biografia;
 
     }
 
