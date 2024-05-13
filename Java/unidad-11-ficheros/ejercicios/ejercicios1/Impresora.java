@@ -1,6 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+
 // Ejercicio 1
 public class Impresora {
     public static void main(String[] agrs) {
@@ -13,6 +14,7 @@ public class Impresora {
             String pregunta = sc.nextLine();
             if (pregunta.equals("q")) {
                 q = false;
+                break;
             }
 
             try {

@@ -36,6 +36,7 @@ public class varMenu extends menus {
         } catch (IOException e) {
             System.out.println("Error en la lectura del archivo " + e.getMessage());
         }
+        sc.close();
     }
 
     public static void constelación() {
@@ -70,6 +71,7 @@ public class varMenu extends menus {
         } catch (IOException e) {
             System.out.println("Error en la lectura del archivo " + e.getMessage());
         }
+        sc.close();
     }
 
     public static void MagnitudLimite() {
@@ -124,5 +126,6 @@ public class varMenu extends menus {
                 System.out.println("Error en la lectura del archivo " + e.getMessage());
             }
         }
+        sc.close();
     }
 }
