@@ -1,13 +1,17 @@
 # Reto 2.3: Consultas con subconsultas II
+
 **[Bases de Datos] Unidad Didáctica 2: DML - Consultas Avanzadas**
 
 Para este reto, volveremos a usar la base de datos Chinook (más información en el Reto 2.1).
 
 ![Diagrama relacional de Chinook (fuente: github.com/lerocha/chinook-database).](https://github.com/lerocha/chinook-database/assets/135025/cea7a05a-5c36-40cd-84c7-488307a123f4)
 
+Mi GitLab: https://gitlab.com/rosquilletas/bases-de-datos
+
 Tras cargar esta base de datos en tu SGBD, realiza las siguientes consultas:
 
 ## Subconsultas Escalares (Scalar Subqueries)
+
 Estas subconsultas devuelven un solo valor, por lo general, se utilizan en contextos donde se espera un solo valor, como parte de una condición `WHERE`, `SELECT`, `HAVING`, etc.
 Ejemplo:
 
@@ -24,6 +28,7 @@ WHERE salary > (SELECT avg(salary)
 ```
 
 ### Consulta 1
+
 Obtener las canciones con una duración superior a la media.
 
 ```sql
@@ -35,6 +40,7 @@ WHERE Milliseconds > (SELECT avg(Milliseconds)
 ```
 
 ### Consulta 2
+
 Listar las 5 últimas facturas del cliente cuyo email es "emma_jones@hotmail.com".
 
 ```sql
@@ -48,7 +54,6 @@ LIMIT 5
 );
 ```
 
-
 ## Subconsultas de varias filas
 
 Diferenciamos dos tipos:
@@ -57,12 +62,13 @@ Diferenciamos dos tipos:
 2. Subconsultas que devuelven múltiples columnas con múltiples filas (es decir, tablas). Se comportan como una tabla temporal y se utilizan en lugares donde se espera una tabla, como en una cláusula `FROM`. [2]
 
 ### Consulta 3
+
 Mostrar las listas de reproducción en las que hay canciones de reggae.
 
 ```sql
 USE Chinook;
-SELECT Name 
-FROM Playlist 
+SELECT Name
+FROM Playlist
 WHERE PlaylistId in (SELECT PlaylistId
 	FROM PlaylistTrack
 		Where TrackId in (SELECT TrackId
@@ -75,16 +81,22 @@ WHERE PlaylistId in (SELECT PlaylistId
 					);
 ```
 
-
 ### Consulta 4
+
 Obtener la información de los clientes que han realizado compras superiores a 20€.
 
-
-
-
-
+```sql
+USE chinook;
+SELECT FirstName, LastName, Email
+FROM Customer
+WHERE CustomerId IN (SELECT CustomerId
+        FROM Invoice
+        WHERE Total > 20
+    );
+```
 
 ### Consulta 5
+
 Álbumes que tienen más de 15 canciones, junto a su artista.
 
 ```sql
@@ -99,6 +111,7 @@ WHERE AlbumId IN (
 ```
 
 ### Consulta 6
+
 Obtener los álbumes con un número de canciones superiores a la media.
 
 ```sql
@@ -132,7 +145,7 @@ HAVING N_Canciones > (SELECT AVG(N_Canciones) FROM
 
 -- info de los albumes con más canciones
 SELECT * FROM Album
-WHERE Albumid in 
+WHERE Albumid in
 (
 select Albumid
 from Track
@@ -146,18 +159,66 @@ group by AlbumId
 );
 ```
 
-
 ### Consulta 7
+
 Obtener los álbumes con una duración total superior a la media.
 
+```sql
+USE chinook;
+SELECT  AlbumId, SUM(Milliseconds) AS duracion
+FROM Track
+GROUP BY AlbumId
+HAVING duracion > (SELECT AVG(duracion)
+        FROM (SELECT AlbumId, SUM(Milliseconds) AS duracion
+            FROM Track
+            GROUP BY AlbumId) AS duracionDelAlbum
+    );
+```
+
 ### Consulta 8
+
 Canciones del género con más canciones.
 
+```sql
+USE chinook;
+SELECT Track.Name, Genre.Name
+FROM Track
+INNER JOIN Genre ON Track.GenreId = Genre.GenreId
+WHERE Genre.GenreId = (SELECT GenreId
+        FROM(SELECT GenreId, COUNT(*) AS numeroCanciones
+                FROM Track
+                GROUP BY GenreId
+                ORDER BY COUNT(*) DESC
+                LIMIT 1
+            ) AS generoComun
+    );
+
+```
+
 ### Consulta 9
+
 Canciones de la _playlist_ con más canciones.
 
+```sql
+USE chinook;
+SELECT Track.Name, Playlist.Name
+FROM Track
+INNER JOIN PlaylistTrack ON Track.TrackId = PlaylistTrack.TrackId
+INNER JOIN Playlist ON PlaylistTrack.PlaylistId = Playlist.PlaylistId
+WHERE Playlist.PlaylistId = (
+	SELECT PlaylistId
+        FROM (SELECT PlaylistId, COUNT(*) AS numeroCanciones
+                FROM PlaylistTrack
+                GROUP BY PlaylistId
+                ORDER BY COUNT(*) DESC
+                LIMIT 1
+            ) PlaylistWithMostTracks
+    );
+
+```
 
 ## Subconsultas Correlacionadas (Correlated Subqueries):
+
 Son subconsultas en las que la subconsulta interna depende de la consulta externa. Esto significa que la subconsulta se ejecuta una vez por cada fila devuelta por la consulta externa, suponiendo una gran carga computacional.
 Ejemplo:
 
@@ -177,11 +238,19 @@ WHERE e1.salary > (SELECT avg(salary)
 La principal diferencia entre una subconsulta correlacionada en SQL y una subconsulta simple es que las subconsultas correlacionadas hacen referencia a columnas de la tabla externa. En el ejemplo anterior, `e1.dept_id` es una referencia a la tabla de la subconsulta externa. [1]
 
 ### Consulta 10
+
 Muestra los clientes junto con la cantidad total de dinero gastado por cada uno en compras.
 
-
+```sql
+USE chinook;
+SELECT FirstName, LastName, SUM(Invoice.Total) AS Total
+FROM Customer
+INNER JOIN Invoice ON Customer.CustomerId = Invoice.CustomerId
+GROUP BY Customer.CustomerId, Customer.FirstName, Customer.LastName;
+```
 
 ### Consulta 11
+
 Obtener empleados y el número de clientes a los que sirve cada uno de ellos.
 
 ```sql
@@ -215,23 +284,59 @@ SELECT EmployeeId, FirstName, LastName, (
 FROM Employee;
 ```
 
-
 ### Consulta 12
+
 Ventas totales de cada empleado.
 
+```sql
+USE chinook;
+SELECT EmployeeId, FirstName, LastName,
+    (
+        SELECT SUM(Invoice.Total)
+        FROM Invoice
+        WHERE Invoice.CustomerId IN (
+            SELECT Customer.CustomerId
+            FROM Customer
+            WHERE Customer.SupportRepId = Employee.EmployeeId
+        )
+    ) AS TotalSales
+FROM Employee
+WHERE Title = 'Sales Support Agent';
+```
+
 ### Consulta 13
+
 Álbumes junto al número de canciones en cada uno.
 
+```sql
+USE chinook;
+SELECT
+    Album.Title,
+    (
+        SELECT COUNT(*)
+        FROM Track
+        WHERE Track.AlbumId = Album.AlbumId
+    ) AS canciones
+FROM Album;
+```
+
 ### Consulta 14
+
 Obtener el nombre del álbum más reciente de cada artista. Pista: los álbumes más antiguos tienen un ID más bajo.
 
+```sql
+USE chinook;
+SELECT Artist.Name AS Nombre,
+    (SELECT Title
+        FROM Album
+        WHERE Album.ArtistId = Artist.ArtistId
+        ORDER BY Album.AlbumId DESC
+        LIMIT 1
+    ) AS ultimoAlbum
+FROM Artist;
+```
 
 ## Referencias
+
 - [1] https://learnsql.es/blog/subconsulta-correlacionada-en-sql-una-guia-para-principiantes/
 - [2] https://learnsql.es/blog/cuales-son-los-diferentes-tipos-de-subconsultas-sql/
-
-
-<!--
-HAVING ??
-GROUP BY ??
--->
