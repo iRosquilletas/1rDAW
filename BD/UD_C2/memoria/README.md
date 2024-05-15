@@ -1,19 +1,25 @@
-## CLI Conexión a la base de datos
+# 1. Conexión a la base de datos con MYSQL CLI
+
+Para conectarnos al mysql desde la terminal, debemos ejecutar el siguiente comando: 
 mysql -u root -p -h 127.0.0.1 -P 33006
 
+-u : usuario  
+-p    
+-h  
+-P : puerto
+
+Esto es lo mismo que hacerlo desde el MYSQL Workbench, pero esta vez desde la terminal
 
 ## COMANDOS
 Ver todas las bases de datos
 ```sql
 SHOW DATABASES;
 ```
-
 Ver todas las tablas de una base de datos
 ```sql
 SHOW TABLES FROM Chinook;
 SHOW FULL TABLES FROM Chinook;
 ```
-
 Ver todas las columnas de una tabla
 ```sql
 SHOW COLUMS FROM Employee;
@@ -38,7 +44,16 @@ DROP xd;
 ```
 
 
-## Commits
+# 2. TCL: Commit, Rollback y Autocommit
+
+### ¿Para qué sirve?
+
+
+
+### Qué posibilidad tenemos?
+
+
+## Comandos
 autocommit
 ```sql
 SELECT @@autocommit;
@@ -72,7 +87,20 @@ SELECT @@autocommit; -- ver en cual commit estamos
 ```
 
 
-## CREACIÓN DE BASE DE DATOS RALLANÉ
+# 3. CREACIÓN DE BASE DE DATOS RALLANÉ
+
+Ahora vamos a crear una base de datos "Rallane" con 3 tablas
+
+
+### ¿Qué tipos elegimos?
+
+### ¿Qué campos necesitamos?
+
+### ¿Qué restricciones ponemos?
+
+### ¿Por qué?
+
+
 
 ```sql
 CREATE DATABASE Rallane;
@@ -89,9 +117,6 @@ CREATE TABLE `Rallane`.`Pasajeros` (
   PRIMARY KEY (`idPasajeros`),
   UNIQUE INDEX `Documento_UNIQUE` (`Documento` ASC) VISIBLE);
 ```
-
-
-
 
 ```sql
 CREATE TABLE `Rallane`.`Vuelos` (
@@ -113,14 +138,20 @@ CREATE TABLE `Rallane`.`Reservas` (
   PRIMARY KEY (`idReserva`));
 ```
 
-```sql
-CREATE TABLE `Rallane`.`Pasajeros` (
-  `idPasajeros` INT NOT NULL,
-  `Nombre` VARCHAR(100) NOT NULL,
-  `Documento` VARCHAR(45) NOT NULL,
-  `TipoDocumento` VARCHAR(15) NOT NULL,
-  `FechaNacimiento` DATE NOT NULL,
-  `Nacionalidad` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idPasajeros`),
-  UNIQUE INDEX `Documento_UNIQUE` (`Documento` ASC) VISIBLE);
-```
+
+# PREGUNTAS
+
+## ¿Por qué necesitamos tres tablas? 
+
+Para que haya una tabla intermediaria que las pueda relaciones, es decir, que es de muchos a muchos.
+
+
+## ¿Cuáles son las claves primarias y foráneas? 
+
+
+
+
+
+## ¿Por qué utilizamos las restricciones que hemos definido y no otras?
+
+
