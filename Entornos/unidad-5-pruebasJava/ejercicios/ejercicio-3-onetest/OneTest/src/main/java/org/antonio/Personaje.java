@@ -6,4 +6,6 @@ public interface Personaje {
     int getPoder();
 
     void recibirDanio(int cantidadDanio);
+
+    void atacar(Personaje enemigo);
 }

@@ -4,40 +4,28 @@ public class Luffy implements Personaje {
     private String nombre;
     private int poder;
 
-    /**
-     * 
-     * @param nombre
-     * @param poder
-     * 
-     */
-
     public Luffy(String nombre, int poder) {
         this.nombre = nombre;
         this.poder = poder;
     }
 
-    /**
-     * @return
-     */
+    @Override
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @return
-     */
+    @Override
     public int getPoder() {
         return poder;
     }
 
     @Override
     public void recibirDanio(int cantidadDanio) {
-        this.poder -= cantidadDanio;
+        poder -= cantidadDanio;
     }
 
-    // Método para atacar a otro personaje
+    @Override
     public void atacar(Personaje enemigo) {
         enemigo.recibirDanio(poder);
     }
-
 }
