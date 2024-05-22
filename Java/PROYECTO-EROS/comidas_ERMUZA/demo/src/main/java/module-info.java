@@ -4,6 +4,5 @@ module sambjavax {
     requires java.sql;
 
     opens sambjavax to javafx.fxml;
-
     exports sambjavax;
 }
