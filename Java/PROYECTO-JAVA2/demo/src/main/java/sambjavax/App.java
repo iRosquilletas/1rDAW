@@ -1,30 +1,26 @@
-package com.ermuza;
+package sambjavax;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
+import javafx.scene.*;
+import javafx.fxml.*;
+import javafx.application.*;
 
 import java.io.IOException;
 
-// "jdbc:mysql://localhost:33006/ERMUZA", "root", "dbrootpass"
-//"jdbc:mysql://localhost:3306/ERMUZA", "root", "1234"
 /**
  * JavaFX App
  */
 public class App extends Application {
 
     private static Scene scene;
-    PrincipalController pr = new PrincipalController();
-
-    String Nombre = pr.getId();
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("principal"), 827, 594);
+        scene = new Scene(loadFXML("login"), 640, 480);
         stage.setScene(scene);
         stage.show();
     }
