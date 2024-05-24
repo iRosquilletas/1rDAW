@@ -41,6 +41,10 @@ public class UsuariosController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             ObservableList<Usuarios> usuarios = getTodosUsuarios();
+            nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+            direccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
+            ip_address.setCellValueFactory(new PropertyValueFactory<>("ip_address"));
+            id.setCellValueFactory(new PropertyValueFactory<>("id"));
             tablaUsuarios.setItems(usuarios);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,19 +63,18 @@ public class UsuariosController implements Initializable {
         ObservableList<Usuarios> usuarios = FXCollections.observableArrayList();
         while (rs.next()) {
             int id = rs.getInt("id");
-            String nombreCompleto = rs.getString("first_name");
+            String nombre = rs.getString("first_name");
             String direccion = rs.getString("email");
             String ip_address = rs.getString("ip_address");
 
-            Usuarios usuario = new Usuarios(id, nombreCompleto, direccion, ip_address);
+            Usuarios usuario = new Usuarios(id, nombre, direccion, ip_address);
             usuarios.add(usuario);
         }
 
+        tablaUsuarios.setItems(usuarios);
         rs.close();
         stmt.close();
         conn.close();
-
-        tablaUsuarios.setItems(usuarios);
         return usuarios; // Se elimina la llamada a tablaUsuarios.setItems(usuarios);
     }
 
