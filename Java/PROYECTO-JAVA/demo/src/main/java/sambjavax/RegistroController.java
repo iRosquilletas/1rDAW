@@ -21,7 +21,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-public class RegistroController {
+public class RegistroController implements Initializable {
 
     @FXML
     private TableView<Registro> tablaRegistro;
@@ -30,56 +30,52 @@ public class RegistroController {
     private TableColumn<Registro, Integer> id;
     @FXML
     private TableColumn<Registro, String> bastidor;
-
     @FXML
     private TableColumn<Registro, String> marca;
-
     @FXML
     private TableColumn<Registro, String> matricula;
-
     @FXML
     private TableColumn<Registro, String> modelo;
 
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        id.setCellValueFactory(new PropertyValueFactory<>("id_moto"));
+        bastidor.setCellValueFactory(new PropertyValueFactory<>("bastidor"));
+        marca.setCellValueFactory(new PropertyValueFactory<>("marca"));
+        matricula.setCellValueFactory(new PropertyValueFactory<>("matricula"));
+        modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+
         try {
-            ObservableList<Registro> registro = getRegistro();
-            bastidor.setCellValueFactory(new PropertyValueFactory<>("numero_bastidor"));
-            marca.setCellValueFactory(new PropertyValueFactory<>("marca"));
-            matricula.setCellValueFactory(new PropertyValueFactory<>("matricula"));
-            modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
-            id.setCellValueFactory(new PropertyValueFactory<>("id"));
-            tablaRegistro.setItems(registro);
+            ObservableList<Registro> registros = getRegistro();
+            tablaRegistro.setItems(registros);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public ObservableList<Registro> getRegistro() throws SQLException {
-        String url = "jdbc:mysql://localhost:33006/cesdb2022";
+        String url = "jdbc:mysql://localhost:3306/projectjava";
         String user = "root";
         String password = "dbrootpass";
 
         Connection conn = DriverManager.getConnection(url, user, password);
         Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM Motocicletas");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM motocicletas");
 
-        ObservableList<Registro> registro = FXCollections.observableArrayList();
+        ObservableList<Registro> registros = FXCollections.observableArrayList();
         while (rs.next()) {
-            int id = rs.getInt("id");
+            int id = rs.getInt("id_moto");
             String bastidor = rs.getString("numero_bastidor");
             String marca = rs.getString("marca");
             String matricula = rs.getString("matricula");
             String modelo = rs.getString("modelo");
 
-            Registro registros = new Registro(id, bastidor, marca, matricula, modelo);
-            registro.add(registros);
+            Registro registro = new Registro(id, bastidor, marca, matricula, modelo);
+            registros.add(registro);
         }
-
-        tablaRegistro.setItems(registro);
         rs.close();
         stmt.close();
         conn.close();
-        return registro;
+        return registros;
     }
-
 }

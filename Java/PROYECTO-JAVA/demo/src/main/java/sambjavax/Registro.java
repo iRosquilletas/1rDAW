@@ -18,6 +18,7 @@ public class Registro {
         setModelo(modelo);
     }
 
+    // sambjavax.RegistroController
     // Getters y setters
     public int getId() {
         return id.get();

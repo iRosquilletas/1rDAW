@@ -12,7 +12,7 @@ public class menuController {
 
     @FXML
     private void añadir() throws IOException {
-        App.setRoot("Registro");
+        App.setRoot("Usuarios");
     }
 
     @FXML
