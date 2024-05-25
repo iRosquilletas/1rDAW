@@ -54,13 +54,13 @@ public class RegistroController implements Initializable {
     }
 
     public ObservableList<Registro> getRegistro() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/projectjava";
+        String url = "jdbc:mysql://localhost:3306/cesdb2022";
         String user = "root";
         String password = "dbrootpass";
 
         Connection conn = DriverManager.getConnection(url, user, password);
         Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM motocicletas");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM Motocicletas");
 
         ObservableList<Registro> registros = FXCollections.observableArrayList();
         while (rs.next()) {
@@ -73,6 +73,7 @@ public class RegistroController implements Initializable {
             Registro registro = new Registro(id, bastidor, marca, matricula, modelo);
             registros.add(registro);
         }
+        tablaRegistro.setItems(registros);
         rs.close();
         stmt.close();
         conn.close();

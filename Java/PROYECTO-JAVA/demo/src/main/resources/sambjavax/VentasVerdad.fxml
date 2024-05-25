@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sambjavax.VentasController">
+   <children>
+      <TableView fx:id="tablaVentas" layoutX="378.0" layoutY="272.0" prefHeight="254.0" prefWidth="372.0">
+        <columns>
+          <TableColumn fx:id="nombre" prefWidth="75.0" text="Nombre" />
+          <TableColumn fx:id="correo" prefWidth="75.0" text="Correo" />
+            <TableColumn fx:id="telefono" prefWidth="75.0" text="Telefono" />
+            <TableColumn fx:id="direccion" prefWidth="75.0" text="Direccion" />
+            <TableColumn fx:id="dni" prefWidth="75.0" text="DNI" />
+            <TableColumn fx:id="id_venta" prefWidth="75.0" text="ID_venta" />
+            <TableColumn fx:id="id_usuario" prefWidth="75.0" text="ID_usuario" />
+            <TableColumn fx:id="id_moto" prefWidth="75.0" text="ID_moto" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tablaRegistro" layoutX="378.0" layoutY="35.0" prefHeight="214.0" prefWidth="372.0">
+         <columns>
+            <TableColumn fx:id="marca" prefWidth="75.0" text="Marca" />
+            <TableColumn fx:id="modelo" prefWidth="75.0" text="Modelo" />
+            <TableColumn fx:id="matricula" prefWidth="75.0" text="Matricula" />
+            <TableColumn fx:id="bastidor" prefWidth="75.0" text="Bastidor" />
+            <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

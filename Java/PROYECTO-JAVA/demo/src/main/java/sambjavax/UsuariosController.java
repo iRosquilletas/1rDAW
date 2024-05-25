@@ -52,7 +52,7 @@ public class UsuariosController implements Initializable {
     }
 
     public ObservableList<Usuarios> getTodosUsuarios() throws SQLException {
-        String url = "jdbc:mysql://localhost:33006/cesdb2022";
+        String url = "jdbc:mysql://localhost:3306/cesdb2022";
         String user = "root";
         String password = "dbrootpass";
 

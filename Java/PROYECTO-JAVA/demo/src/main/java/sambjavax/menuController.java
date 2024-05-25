@@ -12,12 +12,12 @@ public class menuController {
 
     @FXML
     private void añadir() throws IOException {
-        App.setRoot("Usuarios");
+        App.setRoot("Registro");
     }
 
     @FXML
     private void vender() throws IOException {
-        App.setRoot("ventas2");
+        App.setRoot("VentasVerdad");
     }
 
     @FXML
