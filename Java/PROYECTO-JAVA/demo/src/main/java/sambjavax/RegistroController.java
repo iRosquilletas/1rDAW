@@ -121,6 +121,8 @@ public class RegistroController {
     @FXML
     private Button botonAplicar;
     @FXML
+    private Button botonEliminar;
+    @FXML
     private TableView<Registro> tablaRegistro;
     @FXML
     private TableColumn<Registro, Integer> id;
@@ -205,6 +207,61 @@ public class RegistroController {
             
         }
     }
+
+    @FXML
+private void handleBotonEliminar(ActionEvent event) {
+    Registro registroSeleccionado = tablaRegistro.getSelectionModel().getSelectedItem();
+    if (registroSeleccionado == null) {
+        // Si no se ha seleccionado ninguna fila, muestra un mensaje de error
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("Por favor, seleccione una fila para eliminar.");
+        alert.showAndWait();
+        return;
+    }
+
+    try {
+        // Obtener la conexión a la base de datos
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cesdb2022", "root", "dbrootpass");
+
+        // Crear la consulta SQL para eliminar el registro
+        String query = "DELETE FROM Motocicletas WHERE id_moto = ?";
+        PreparedStatement statement = conn.prepareStatement(query);
+        statement.setInt(1, registroSeleccionado.getId());
+
+        // Ejecutar la consulta SQL
+        int rowsDeleted = statement.executeUpdate();
+
+        if (rowsDeleted > 0) {
+            // Si se eliminó correctamente, quitar la fila de la tabla
+            tablaRegistro.getItems().remove(registroSeleccionado);
+
+            // Mostrar un mensaje de éxito
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Éxito");
+            alert.setHeaderText(null);
+            alert.setContentText("Registro eliminado con éxito.");
+            alert.showAndWait();
+        } else {
+            // Si no se pudo eliminar, mostrar un mensaje de error
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Error al eliminar el registro. Por favor, inténtelo de nuevo.");
+            alert.showAndWait();
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Manejar cualquier excepción que pueda ocurrir al ejecutar la consulta SQL
+        // Mostrar un mensaje de error
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("Error al eliminar el registro. Por favor, inténtelo de nuevo.");
+        alert.showAndWait();
+    }
+}
 
     public ObservableList<Registro> getRegistro() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/cesdb2022";
