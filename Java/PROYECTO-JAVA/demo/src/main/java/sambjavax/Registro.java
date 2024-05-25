@@ -18,7 +18,6 @@ public class Registro {
         setModelo(modelo);
     }
 
-    // sambjavax.RegistroController
     // Getters y setters
     public int getId() {
         return id.get();
@@ -64,7 +63,7 @@ public class Registro {
         this.modelo.set(modelo);
     }
 
-    public SimpleStringProperty ModeloProperty() {
+    public SimpleStringProperty modeloProperty() {
         return modelo;
     }
 
@@ -76,7 +75,7 @@ public class Registro {
         this.matricula.set(matricula);
     }
 
-    public SimpleStringProperty MatriculaProperty() {
+    public SimpleStringProperty matriculaProperty() {
         return matricula;
     }
 }
