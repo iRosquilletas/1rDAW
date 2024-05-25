@@ -10,19 +10,19 @@ public class Ventas {
     private final SimpleStringProperty correo = new SimpleStringProperty();
     private final SimpleStringProperty telefono = new SimpleStringProperty();
     private final SimpleStringProperty direccion = new SimpleStringProperty();
+    private final SimpleStringProperty dni = new SimpleStringProperty();  
     private final SimpleIntegerProperty idMoto = new SimpleIntegerProperty();
 
-    public Ventas(int idVenta, int idUsuario, String cliente, String correo, String telefono, String direccion, int idMoto) {
+    public Ventas(int idVenta, int idUsuario, String cliente, String correo, String telefono, String direccion, String dni, int idMoto) {
         setIdVenta(idVenta);
         setIdUsuario(idUsuario);
         setCliente(cliente);
         setCorreo(correo);
         setTelefono(telefono);
         setDireccion(direccion);
+        setDni(dni);  
         setIdMoto(idMoto);
     }
-
-
 
     public int getIdVenta() {
         return idVenta.get();
@@ -96,6 +96,18 @@ public class Ventas {
         return direccion;
     }
 
+    public String getDni() {
+        return dni.get();
+    }
+
+    public void setDni(String dni) {
+        this.dni.set(dni);
+    }
+
+    public SimpleStringProperty dniProperty() {
+        return dni;
+    }
+
     public int getIdMoto() {
         return idMoto.get();
     }
@@ -108,4 +120,3 @@ public class Ventas {
         return idMoto;
     }
 }
-

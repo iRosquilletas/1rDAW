@@ -22,7 +22,7 @@ public class menuController {
 
     @FXML
     private void info() throws IOException {
-        App.setRoot("informacion");
+        App.setRoot("InformacionVerdad");
     }
 
     @FXML

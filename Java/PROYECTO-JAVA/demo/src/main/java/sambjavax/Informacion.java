@@ -1,31 +1,46 @@
 package sambjavax;
+
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-public class MotocicletaVentas {
-    private final SimpleIntegerProperty id_motoA = new SimpleIntegerProperty();
-    private final SimpleStringProperty marca = new SimpleStringProperty();
-    private final SimpleStringProperty modelo = new SimpleStringProperty();
-    private final SimpleStringProperty matricula = new SimpleStringProperty();
+
+public class Informacion {
+    private final SimpleIntegerProperty id = new SimpleIntegerProperty();
     private final SimpleStringProperty bastidor = new SimpleStringProperty();
+    private final SimpleStringProperty marca = new SimpleStringProperty();
+    private final SimpleStringProperty matricula = new SimpleStringProperty();
+    private final SimpleStringProperty modelo = new SimpleStringProperty();
 
-    public MotocicletaVentas(int id_motoA, String marca, String modelo, String matricula, String bastidor) {
-        setId_motoA(id_motoA);
-        setMarca(marca);
-        setModelo(modelo);
-        setMatricula(matricula);
+    public Informacion(int id, String bastidor, String marca, String matricula, String modelo) {
+        setId(id);
         setBastidor(bastidor);
+        setMarca(marca);
+        setMatricula(matricula);
+        setModelo(modelo);
     }
 
-    public int getId_motoA() {
-        return id_motoA.get();
+    // Getters y setters
+    public int getId() {
+        return id.get();
     }
 
-    public void setId_motoA(int id_motoA) {
-        this.id_motoA.set(id_motoA);
+    public void setId(int id) {
+        this.id.set(id);
     }
 
     public SimpleIntegerProperty idProperty() {
-        return id_motoA;
+        return id;
+    }
+
+    public String getBastidor() {
+        return bastidor.get();
+    }
+
+    public void setBastidor(String nombre) {
+        this.bastidor.set(nombre);
+    }
+
+    public SimpleStringProperty bastidorProperty() {
+        return bastidor;
     }
 
     public String getMarca() {
@@ -62,17 +77,5 @@ public class MotocicletaVentas {
 
     public SimpleStringProperty matriculaProperty() {
         return matricula;
-    }
-
-    public String getBastidor() {
-        return bastidor.get();
-    }
-
-    public void setBastidor(String bastidor) {
-        this.bastidor.set(bastidor);
-    }
-
-    public SimpleStringProperty bastidorProperty() {
-        return bastidor;
     }
 }
