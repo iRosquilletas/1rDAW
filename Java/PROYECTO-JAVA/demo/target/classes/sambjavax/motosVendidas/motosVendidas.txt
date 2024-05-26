@@ -1,2 +1,0 @@
-ID Venta: 19, ID Usuario: 5, Cliente: joijoilj0, Correo: 09j09j0, Telefono: j09j09jopi, Direccion: jopijpo, DNI: jpojpo, ID Moto: 10, Marca: Marca5, Modelo: Modelo5, Matricula: MAT005, Bastidor: NB005
-ID Venta: 29, ID Usuario: 5, Cliente: lksdfnlk, Correo: PLADKFNKL, Telefono: 234524, Direccion: OFJKO, DNI: 2304324D, ID Moto: 13, Marca: oihoih, Modelo: oijhoi, Matricula: oihoih99090, Bastidor: 09009
